@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Netphi", "src\Netphi.dscom\Netphi.csproj", "{D753B409-85C7-421C-9FFC-D3BDDB1A7790}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Netphi", "src\Netphi\Netphi.csproj", "{FBD45999-6149-4D86-8634-B1D126948DFD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D753B409-85C7-421C-9FFC-D3BDDB1A7790}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D753B409-85C7-421C-9FFC-D3BDDB1A7790}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D753B409-85C7-421C-9FFC-D3BDDB1A7790}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D753B409-85C7-421C-9FFC-D3BDDB1A7790}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBD45999-6149-4D86-8634-B1D126948DFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBD45999-6149-4D86-8634-B1D126948DFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBD45999-6149-4D86-8634-B1D126948DFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBD45999-6149-4D86-8634-B1D126948DFD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

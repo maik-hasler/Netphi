@@ -1,5 +1,5 @@
 # Netphi
-Ever wondered on how to combine the strengths of both Delphi and .NET to create powerful, versatile applications? 
+Ever wondered on how to combine the strengths of both Delphi and .NET to create powerful, versatile applications?
 
 **Disclaimer:** In the following, I will only show how to use .NET in Delphi and not the other way around.
 
@@ -51,6 +51,11 @@ After compiling the project you will have a `ProjectName.dll`, `ProjectName.deps
 
 ## Register the COM host for COM
 Open an elevated command prompt and run `regsvr32 ProjectName.comhost.dll`. That will register all of your exposed .NET objects with COM.
+
+## Reg-Free COM
+``
+dotnet build src/Netphi.dscom/Netphi.dscom.csproj /p:RegFree=True
+``
 
 # Generate the .tlb
 [dscom](https://github.com/dspace-group/dscom)

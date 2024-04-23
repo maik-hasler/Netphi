@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <EnableComHosting>true</EnableComHosting>
+    <WarningsAsErrors>$(WarningsAsErrors);DSCOM001</WarningsAsErrors>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <SkipManualTlbExport>false</SkipManualTlbExport>
+  </PropertyGroup>
+
+  <Target Name="GenerateTypelib" AfterTargets="CoreBuild" Condition="'$(SkipManualTlbExport)' != 'true'">
+    <Exec Command="$(ProjectDir)/../binaries/dscom32.exe tlbexport $(TargetPath) /out:$(ProjectDir)$(TargetName).tlb" />
+    <Exec Command="$(ProjectDir)/../binaries/dscom32.exe tlbdump $(ProjectDir)$(TargetName).tlb /out:$(ProjectDir)$(TargetName).yaml" />
+  </Target>
+
+</Project>

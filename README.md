@@ -10,6 +10,7 @@ This article walks you through how to expose a class to COM from .NET Core (or .
     - [Create the library](#create-the-library)
     - [Generate the COM host](#generate-the-com-host)
     - [Register the COM host for COM](#register-the-com-host-for-com)
+- [Generate the type library](#generate-the-type-library)
 
 # Godzilla-type breaking change
 According to the [official Microsoft documentation](https://learn.microsoft.com/en-us/dotnet/core/native-interop/expose-components-to-com#embedding-type-libraries-in-the-com-host)...
@@ -82,28 +83,13 @@ For x64:
 ```
 -->
 
-# Generate the typelib
-- Manually create the `.idl`
-- Note that the guids in the `.idl` for the interface and coclass need to match the guids in your `.cs` interface and class
-- Use MIDL to generate the typelib `midl ProjectName.idl`
-- Follow [this YouTube tutorial](https://www.youtube.com/watch?v=ZutlhThQJ5s&ab_channel=AliY%C4%B1ld%C4%B1r%C4%B1m) to import the `.tlb` in Delphi
+# Generate the type library
+While there are many ways to generate the type library, the offical one, due to the end of support in .NET Core and .NET 5+, is to manually create a `.idl` and use the MIDL compiler to generate the `.tlb`. Another way is to continue to use .NET Framework just for regasm's capability to create a `.tlb` from a `.cs` file. Another one is to use the third party tool [dscom](https://github.com/dspace-group/dscom).
 
-# Useful links
-- https://stackoverflow.com/a/78308516/16047487
+## Why dscom?
 
+## Download the dscom binaries
 
+## Integrate dscom in the MSBuild process
 
-
-
-
-
-
-
-
-
-
-dotnet build -r win-x86  --no-self-contained
-
-.\bin\dscom32.exe tlbregister <YOUR-REPO-PATH>\comtestdotnet\comtestdotnet.tlb
-
-regsvr32.exe <YOUR-REPO-PATH>\comtestdotnet\bin\Debug\net6.0\win-x86\comtestdotnet.comhost.dll 
+## Register the type library

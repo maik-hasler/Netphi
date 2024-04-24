@@ -16,7 +16,7 @@ According to the [official Microsoft documentation](https://learn.microsoft.com/
 
 > Unlike in .NET Framework, there is no support in .NET Core or .NET 5+ for generating a COM Type Library (TLB) from a .NET assembly. The guidance is to either manually write an IDL file or a C/C++ header for the native declarations of the COM interfaces. If you decide to write an IDL file, you can compile it with the Visual C++ SDK's MIDL compiler to produce a TLB.
 
-... there is no support in .NET Core or .NET 5+ to automatically generate a `.tlb` file, which is later needed for the COM client in Delphi.
+... there is no support in .NET Core or .NET 5+ to automatically generate a `.tlb` file, which is later needed for the generation of the COM client in Delphi.
 
 ## What about .NET Framework?
 While many projects have already migrated to .NET Core or .NET 5+, there are still some applications running on the .NET Framework. 

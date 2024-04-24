@@ -69,7 +69,7 @@ Upon successful execution, you'll find the following files in the output:
 - `ProjectName.comhost.dll`
 
 ## Register the COM host for COM
-Open an elevated command prompt and run `regsvr32 ProjectName.comhost.dll`. That will register all of your exposed .NET objects with COM.
+Open an **elevated** command prompt and run `regsvr32 ProjectName.comhost.dll`. That will register all of your exposed .NET objects with COM.
 
 <!---
 **TODO: Clarify if regsvr32 automatically checks if the ProjectName.comhost.dll is x86 or x64 and therefore register it in the correct registry. Otherwise use this command:**
@@ -86,10 +86,20 @@ For x64:
 # Generate the type library
 While there are many ways to generate the type library, the offical one, due to the end of support in .NET Core and .NET 5+, is to manually create a `.idl` and use the MIDL compiler to generate the `.tlb`. Another way is to continue to use .NET Framework just for regasm's capability to create a `.tlb` from a `.cs` file. Another one is to use the third party tool [dscom](https://github.com/dspace-group/dscom).
 
-## Why dscom?
+1. Download the `dscom32.exe` and the `dscom.exe` from the [dscom releases](https://github.com/dspace-group/dscom/releases).
+2. Copy the dscom32.exe` and the `dscom.exe` to a `binaries/` folder on the `.sln` root.
+3. Open your `.csproj` and add the following MSBuild command (For x86 only at the moment, there is a better way for x64)
+```xml
+<PropertyGroup>
+  <WarningsAsErrors>$(WarningsAsErrors);DSCOM001</WarningsAsErrors>
+</PropertyGroup>
 
-## Download the dscom binaries
+<PropertyGroup>
+  <SkipManualTlbExport>false</SkipManualTlbExport>
+</PropertyGroup>
 
-## Integrate dscom in the MSBuild process
-
-## Register the type library
+<Target Name="GenerateTypelib" AfterTargets="CoreBuild" Condition="'$(SkipManualTlbExport)' != 'true'">
+  <Exec Command="$(SolutionDir)/binaries/dscom32.exe tlbexport $(TargetPath) /out:$(ProjectDir)$(TargetName).tlb" />
+</Target>
+```
+4. Open an **elevated** command prompt and run `dscom32.exe tlbregister ProjectName.tlb`.

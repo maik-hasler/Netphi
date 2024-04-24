@@ -1,5 +1,5 @@
 # Netphi
-This article walks you through how to expose a class to COM from .NET Core (or .NET 5+).
+This article walks you through how to expose a class to COM from .NET Core (or .NET 5+) and how to create a COM client in Delphi that consumes the COM host.
 
 # Table of contents
 - [Introduction](#netphi)
@@ -87,7 +87,7 @@ For x64:
 While there are many ways to generate the type library, the offical one, due to the end of support in .NET Core and .NET 5+, is to manually create a `.idl` and use the MIDL compiler to generate the `.tlb`. Another way is to continue to use .NET Framework just for regasm's capability to create a `.tlb` from a `.cs` file. Another one is to use the third party tool [dscom](https://github.com/dspace-group/dscom).
 
 1. Download the `dscom32.exe` and the `dscom.exe` from the [dscom releases](https://github.com/dspace-group/dscom/releases).
-2. Copy the dscom32.exe` and the `dscom.exe` to a `binaries/` folder on the `.sln` root.
+2. Copy the `dscom32.exe` and the `dscom.exe` to a `binaries/` folder on the `.sln` root.
 3. Open your `.csproj` and add the following MSBuild command (For x86 only at the moment, there is a better way for x64)
 ```xml
 <PropertyGroup>
